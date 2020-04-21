@@ -1,6 +1,8 @@
 
 const {Kafka} = require("kafkajs");
 
+run();
+
 async function run() {
     try {
         // Create an admin connection
@@ -22,8 +24,14 @@ async function run() {
             }]
         });
 
+        console.log("Successfully created!")
+        await admin.disconnect();
+
     }
     catch(ex) {
         console.error(`Something bad happened ${ex}`)
+    }
+    finally {
+        process.exit(0);
     }
 }
