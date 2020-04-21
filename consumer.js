@@ -21,13 +21,18 @@ async function run() {
             "fromBeginning": true
         });
 
-
+        await consumer.run({
+            // This will gonna process each message has been received
+            "eachMessage": async result => {
+                console.log(`RVD Msg ${result.message.value} on partition ${result.partition}`)
+            }
+        });
 
     }
     catch(ex) {
         console.error(`Something bad happened ${ex}`)
     }
     finally {
-        process.exit(0);
+
     }
 }
