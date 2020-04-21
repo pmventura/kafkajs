@@ -1,6 +1,5 @@
-
 const {Kafka} = require("kafkajs");
-const msg = process.argv[2];
+
 run();
 
 async function run() {
