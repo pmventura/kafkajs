@@ -15,18 +15,19 @@ async function run() {
         await producer.connect();
         console.log("Connected!");
 
-        
+        const partition = msg[0] < "N" ? 0 : 1;
 
-        producer.send({
+        const result = producer.send({
             "topic": "Users",
             "messages": [
                 {
-                    "value": msg
+                    "value": msg,
+                    "partition": partition
                 }
             ]
         });
 
-        console.log("Successfully created!")
+        console.log(`Send Successfully! ${JSON.stringify(result)}`);
         await producer.disconnect();
 
     }
