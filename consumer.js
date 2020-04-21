@@ -16,6 +16,12 @@ async function run() {
         console.log("Connected!");
 
         // Read all the time
+        await consumer.subscribe({
+            "topic": "Users",
+            "fromBeginning": true
+        });
+
+
 
     }
     catch(ex) {
