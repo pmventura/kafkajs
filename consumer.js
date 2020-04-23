@@ -1,5 +1,5 @@
 const {Kafka} = require("kafkajs");
-const msg = process.argv[2];
+
 run();
 
 async function run() {
@@ -10,7 +10,7 @@ async function run() {
             "brokers": ["pmventura:9092"]
         });
 
-        const consumer = kafka.consumer();
+        const consumer = kafka.consumer({groupId: "test"});
         console.log("Connnectingg......");
         await consumer.connect();
         console.log("Connected!");
